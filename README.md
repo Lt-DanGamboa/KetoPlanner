@@ -1,2 +1,2 @@
 # KetoPlanner
-Keto Diet planner with recipes from the platform and recipe sharing
+Recipe sharing and Keto Diet planner
