@@ -7,9 +7,4 @@ namespace KetoPlanner.Services.RecipeCreator
         Command<RecipeInput> SaveRecipe { get; }
     }
 
-    public class RecipeCreator : IRecipeCreator
-    {
-        public Command<RecipeInput> SaveRecipe => throw new System.NotImplementedException();
-    }
-
 }

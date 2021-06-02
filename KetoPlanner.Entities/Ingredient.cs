@@ -1,4 +1,4 @@
-namespace KetoPlanner.Services.RecipeCreator
+namespace KetoPlanner.Entities
 {
     public class Ingredient
     {

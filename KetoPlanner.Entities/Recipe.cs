@@ -1,10 +1,12 @@
 using System.Collections.Generic;
-using KetoPlanner.Entities;
 
-namespace OpenREITS.Services.RecipeCreator
+namespace KetoPlanner.Entities
 {
-    public class RecipeInput
+    public class Recipe
     {
+        public int UserId { get; set; }
+        //public string ImageURL { get; set; }
+        //public string ShareURL { get; set; }
         public string Description { get; set; }
         public int CountOfCarbs { get; set; }
         public int Likes { get; set; }

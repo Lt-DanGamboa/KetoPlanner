@@ -1,25 +1,31 @@
 using System;
 using System.Security.Principal;
-using LanguageExt;
+using KetoPlanner.Entities;
 
 namespace KetoPlanner.Services
 {
     public abstract class Query<TIn, TOut>
     {
-        public abstract TOut Invoke(IPrincipal user, TIn input);
+        public abstract TOut Invoke(IExtendedPrincipal user, TIn input);
 
-        public static Query<TIn, TOut> Wrap(Func<IPrincipal, TIn, TOut> func)
+        public static Query<TIn, TOut> Wrap(Func<IExtendedPrincipal, TIn, TOut> func)
         {
-            throw new System.NotImplementedException();
+            return new LambdaQuery<TIn, TOut>(func);
         }
     }
 
-    public abstract class Command<TIn> : Query<TIn, Unit>
+    public class LambdaQuery<_TIn, _TOut> : Query<_TIn, _TOut>
     {
-
+        private readonly Func<IExtendedPrincipal, _TIn, _TOut> Func;
+        public LambdaQuery(Func<IExtendedPrincipal, _TIn, _TOut> func)
+        {
+            Func = func;
+        }
+        public override _TOut Invoke(IExtendedPrincipal user, _TIn input)
+        {
+            return Func(user, input);
+        }
     }
-
-
 
 
 }
